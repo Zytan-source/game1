@@ -22,10 +22,10 @@ public class GameService {
 		int matchCount = 1;
 		
 		for(int cpuCards : cardsPerMatch) {
-			out.nextMatch(matchCount);
+			out.nextMatch(matchCount, Config.REWARDS[matchCount - 1]);
 			MatchResult mr = ms.play(p, cpuCards);
 			if(mr.won) {
-				int reward = Config.REWARDS[matchCount - 1];
+				int reward = Config.REWARDS[matchCount - 1] * p.multiplier;
 	            p.multiplier++;
 				out.beatOpponent(matchCount, reward, p.multiplier);
 				p.gold += reward;

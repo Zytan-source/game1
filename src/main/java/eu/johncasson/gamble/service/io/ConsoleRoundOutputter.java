@@ -12,7 +12,7 @@ public class ConsoleRoundOutputter implements RoundOutputter {
      */
 	@Override
     public void showCpuCards(int target, int totalPlayed) {
-		String str = String.format("\nYour opponent's card shows %01d. Get a %01d or more to win.\n", 
+		String str = String.format("\nYour opponent's card shows %01d. Get a %01d or more to beat their card.\n", 
 				target, target - totalPlayed);
 		print(str);
 		Util.pause(Config.DELAY * 2);

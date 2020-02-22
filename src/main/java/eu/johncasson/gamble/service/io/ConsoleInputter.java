@@ -76,6 +76,9 @@ public class ConsoleInputter implements Inputter {
 		boolean response = false;
 		
 		String input = null;
+		// Hack: without this, the reader next line fires without user input
+		// in Eclipse's console
+		reader = new Scanner(System.in);
 		while(!response) {
 			input= reader.nextLine();
 			if(input.matches(YES_OR_NO)) {

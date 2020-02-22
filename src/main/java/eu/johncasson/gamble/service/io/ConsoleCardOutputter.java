@@ -14,9 +14,16 @@ public class ConsoleCardOutputter implements CardOutputter {
         
         int cardCount = 1;
         for(PlayerCard pc : cards) {
-            str = String.format("Card %d:%2d-%2d uses left: %d", cardCount, pc.minValue, pc.maxValue, pc.uses);
+            str = String.format("Card %d  %2d-%2d     Uses left  %2d/%2d", 
+                    cardCount, pc.minValue, pc.maxValue, pc.uses, pc.maxUses);
             Util.print(str);
             cardCount++;
         }
+    }
+
+    @Override
+    public void chooseCardToRecharge() {
+        Util.print("Choose a card to recharge: ");
+        
     }
 }

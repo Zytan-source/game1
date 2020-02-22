@@ -8,9 +8,6 @@ import eu.johncasson.gamble.entities.PlayerCard;
 import eu.johncasson.gamble.entities.Round;
 import eu.johncasson.gamble.entities.RoundResult;
 import eu.johncasson.gamble.service.io.CardOutputter;
-import eu.johncasson.gamble.service.io.ConsoleCardOutputter;
-import eu.johncasson.gamble.service.io.ConsoleInputter;
-import eu.johncasson.gamble.service.io.ConsoleRoundOutputter;
 import eu.johncasson.gamble.service.io.Inputter;
 import eu.johncasson.gamble.service.io.RoundOutputter;
 
@@ -19,12 +16,20 @@ import eu.johncasson.gamble.service.io.RoundOutputter;
  */
 public class RoundService {
 	
-    CardOutputter cardOut = new ConsoleCardOutputter();
-	RoundOutputter roundOut = new ConsoleRoundOutputter();
-	Inputter in = new ConsoleInputter();
-	CardService cs = new CardService(in);
+    CardOutputter cardOut;
+	RoundOutputter roundOut;
+	Inputter in;
+	CardService cs;
 	
-	public Round createRound() {
+	public RoundService(CardOutputter cardOut, RoundOutputter roundOut, Inputter in, CardService cs) {
+        super();
+        this.cardOut = cardOut;
+        this.roundOut = roundOut;
+        this.in = in;
+        this.cs = cs;
+    }
+
+    public Round createRound() {
 		Round r = new Round();
 		r.target = randomCardValue();
 		r.playerTotal = 0;

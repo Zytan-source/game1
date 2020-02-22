@@ -4,18 +4,19 @@ import eu.johncasson.gamble.config.Config;
 
 public class ConsoleGameOutputter implements GameOutputter {
 
-	/* (non-Javadoc)
-     * @see eu.johncasson.gamble.service.output.GameOutputter#nextMatch(int)
-     */
-	@Override
-    public void nextMatch(int matchNum) {
-		String str = String.format("**************************************\n"
-				+ "You come face to face with opponent %d\n"
-				+ "**************************************\n", matchNum);
-	
-		Util.print(str);
-		Util.pause(Config.DELAY * 3);
-	}
+
+    @Override
+    public void nextMatch(int matchNum, int reward) {
+        String str = String.format("**************************************\n"
+                + "You come face to face with opponent %d\n"
+                + "**************************************\n", matchNum);
+    
+        Util.print(str);
+        str = String.format("You'll get %d gold if you win", reward);
+        Util.print(str);
+        Util.pause(Config.DELAY * 3);
+        
+    }
 
 	/* (non-Javadoc)
      * @see eu.johncasson.gamble.service.output.GameOutputter#beatOpponent(int, int)
@@ -23,9 +24,10 @@ public class ConsoleGameOutputter implements GameOutputter {
 	@Override
     public void beatOpponent(int opponentNum, int reward, int multiplier) {
 		String str = String.format("Nice one! Opponent %d is defeated. "
-		        + "You get %d gold. "
-		        + "Your next reward will be %d times bigger.", 
-		        opponentNum, reward, multiplier);
+		        + "You get %d gold (%d for the win with a %d multiplier). "
+		        + "Your multiplier increased to %d.", 
+		        opponentNum, reward, reward / (multiplier - 1), multiplier - 1, 
+		        multiplier);
 		Util.print(str);
 		Util.pause(Config.DELAY * 2); 
 	}

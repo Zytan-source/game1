@@ -5,9 +5,6 @@ import eu.johncasson.gamble.entities.Player;
 import eu.johncasson.gamble.entities.Round;
 import eu.johncasson.gamble.entities.RoundResult;
 import eu.johncasson.gamble.service.io.CardOutputter;
-import eu.johncasson.gamble.service.io.ConsoleCardOutputter;
-import eu.johncasson.gamble.service.io.ConsoleInputter;
-import eu.johncasson.gamble.service.io.ConsoleMatchOutputter;
 import eu.johncasson.gamble.service.io.MatchOutputter;
 
 /**
@@ -15,18 +12,26 @@ import eu.johncasson.gamble.service.io.MatchOutputter;
  */
 public class MatchService {
     
-	private RoundService rs = new RoundService();
-	private CardService cs = new CardService(new ConsoleInputter());
-	private MatchOutputter mos = new ConsoleMatchOutputter();
-	private CardOutputter cardOut = new ConsoleCardOutputter();
+	private RoundService rs;
+	private CardService cs;
+	private MatchOutputter mos;
+	private CardOutputter cardOut;
 	
+    public MatchService(RoundService rs, CardService cs, MatchOutputter mos, CardOutputter cardOut) {
+        super();
+        this.rs = rs;
+        this.cs = cs;
+        this.mos = mos;
+        this.cardOut = cardOut;
+    }
+
     public MatchResult play(Player p, int cpuCards) {
 		int roundNum = 1;
 		
 		for(; cpuCards > 0; cpuCards--) {
 			
 			Round r = rs.createRound();
-			mos.nextRound(roundNum);
+			mos.nextRound(roundNum, cpuCards);
 			
 			RoundResult rr = rs.play(r,  p);
 			

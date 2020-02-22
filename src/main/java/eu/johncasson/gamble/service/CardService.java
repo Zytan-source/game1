@@ -5,15 +5,18 @@ import java.util.List;
 import eu.johncasson.gamble.config.Config;
 import eu.johncasson.gamble.entities.Player;
 import eu.johncasson.gamble.entities.PlayerCard;
+import eu.johncasson.gamble.service.io.CardOutputter;
 import eu.johncasson.gamble.service.io.Inputter;
 
 public class CardService {
     
-    public Inputter in;
+    private Inputter in;
+    private CardOutputter co;
 
-	public CardService(Inputter consoleInputter) {
+	public CardService(Inputter consoleInputter, CardOutputter co) {
         super();
         this.in = consoleInputter;
+        this.co = co;
     }
 
     public boolean movesLeft(List<PlayerCard> cards) {
@@ -39,6 +42,7 @@ public class CardService {
 	 */
     public void rechargeCard(Player p) {
         
+        co.chooseCardToRecharge();
         PlayerCard card = in.selectCard(p.cards);
         card.uses = card.maxUses;
     }

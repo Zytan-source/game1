@@ -2,7 +2,7 @@ package eu.johncasson.gamble.service.io;
 
 public interface VillageOutputter {
 
-    void shouldVisit();
+    void shouldVisit(int nextReward);
 
     void welcome();
 

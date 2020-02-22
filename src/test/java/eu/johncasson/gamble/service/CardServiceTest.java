@@ -14,13 +14,17 @@ import org.mockito.junit.MockitoJUnitRunner;
 
 import eu.johncasson.gamble.entities.Player;
 import eu.johncasson.gamble.entities.PlayerCard;
+import eu.johncasson.gamble.service.io.CardOutputter;
 import eu.johncasson.gamble.service.io.Inputter;
 
 @RunWith(MockitoJUnitRunner.class)
 public class CardServiceTest {
     
     @Mock
-    Inputter inMock;
+    private Inputter inMock;
+    
+    @Mock
+    private CardOutputter co;
     
     @InjectMocks
     CardService cs;

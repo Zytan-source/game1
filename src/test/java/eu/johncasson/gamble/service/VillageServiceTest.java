@@ -17,7 +17,7 @@ import eu.johncasson.gamble.service.io.VillageOutputter;
 public class VillageServiceTest {
 
     @InjectMocks
-    private VillageServiceImpl vs;
+    private VillageService vs;
     
     @Mock
     private Inputter inputterMock;

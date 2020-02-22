@@ -2,7 +2,7 @@ package eu.johncasson.gamble.service.io;
 
 public interface GameOutputter {
 
-    void nextMatch(int matchNum);
+    void nextMatch(int matchNum, int rewards);
 
     void beatOpponent(int opponentNum, int reward, int multiplier);
 

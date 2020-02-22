@@ -6,8 +6,13 @@ public class ConsoleVillageOutputter implements VillageOutputter {
      * @see eu.johncasson.gamble.service.output.VillageOutputter#shouldVisit()
      */
 	@Override
-    public void shouldVisit() {
-		Util.print("Will you trek back to the village? If you visit the village you'll lose your multiplier. Type yes or no.\n");
+    public void shouldVisit(int nextReward) {
+	    String str = String.format("Will you trek back to the village?\n"
+                + "If you visit the village you'll lose your multiplier.\n"
+                + "Your next opponent has %d gold\n"
+                + "Type yes or no: ", nextReward);
+	    
+		Util.print(str);
 	}
 
 	/* (non-Javadoc)
@@ -41,8 +46,8 @@ public class ConsoleVillageOutputter implements VillageOutputter {
      */
 	@Override
     public void cardsRecharged() {
-		Util.print("You arrive in the village and seek out a card charger.\n"
-				+ "The card charger's mysterious powers recharge your cards");
+		Util.print("You arrive in the village and find a mysterious card charger.\n"
+				+ "The card charger recharge your cards");
 	}
 
 	/* (non-Javadoc)
@@ -50,7 +55,7 @@ public class ConsoleVillageOutputter implements VillageOutputter {
      */
 	@Override
     public void backToBattle() {
-		Util.print("You leave the village and trek through the dense forest.");		
+		Util.print("You leave the village and trek through the dense forest.\n");		
 	}
 
 	/* (non-Javadoc)
