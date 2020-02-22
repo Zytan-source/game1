@@ -1,5 +1,7 @@
 package eu.johncasson.gamble;
 
+import com.beust.jcommander.JCommander;
+
 import eu.johncasson.gamble.config.Config;
 import eu.johncasson.gamble.entities.Player;
 import eu.johncasson.gamble.service.PlayerService;
@@ -15,9 +17,18 @@ import eu.johncasson.gamble.service.PlayerService;
  * 
  * The Outputters and Inputters provide IO with the user.
  */
-public class Main 
-{
+public class Main {
     public static void main( String[] args ) {
+        Arguments arguments = new Arguments();
+        JCommander.newBuilder()
+            .addObject(arguments)
+            .build()
+            .parse(args);
+        
+        if(arguments.targetGold != null) {
+            Config.targetGold = arguments.targetGold;
+        }
+        
         Player p = new PlayerService().setup();
         GameFactory.create().play(p, Config.CARDS_PER_MATCH);
     }

@@ -21,6 +21,8 @@ public class GameService {
     public void play(Player p, int[] cardsPerMatch) {
 		int matchCount = 1;
 		
+		out.intro();
+		
 		for(int cpuCards : cardsPerMatch) {
 			out.nextMatch(matchCount, Config.REWARDS[matchCount - 1]);
 			MatchResult mr = ms.play(p, cpuCards);
@@ -33,7 +35,7 @@ public class GameService {
 				out.lost(matchCount);
 			}
 			out.gold(p.gold);
-			vs.visit(matchCount, p);
+			vs.visit(matchCount, p, Config.targetGold);
 			matchCount++;
 		}
 	}

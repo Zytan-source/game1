@@ -13,12 +13,15 @@ public class ConsoleCardOutputter implements CardOutputter {
         Util.print(str);
         
         int cardCount = 1;
+        StringBuilder sb = new StringBuilder();
         for(PlayerCard pc : cards) {
-            str = String.format("Card %d  %2d-%2d     Uses left  %2d/%2d", 
-                    cardCount, pc.minValue, pc.maxValue, pc.uses, pc.maxUses);
-            Util.print(str);
+            sb.append(String.format("Card %d  %2d-%2d     Uses left  %2d/%2d\n", 
+                    cardCount, pc.minValue, pc.maxValue, pc.uses, pc.maxUses));
+            
+            
             cardCount++;
         }
+        Util.print(sb.toString());
     }
 
     @Override

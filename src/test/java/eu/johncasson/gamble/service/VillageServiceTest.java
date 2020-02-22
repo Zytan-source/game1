@@ -2,6 +2,7 @@ package eu.johncasson.gamble.service;
 
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.verify;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -9,6 +10,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
 
+import eu.johncasson.gamble.config.Config;
 import eu.johncasson.gamble.entities.Player;
 import eu.johncasson.gamble.service.io.Inputter;
 import eu.johncasson.gamble.service.io.VillageOutputter;
@@ -37,9 +39,25 @@ public class VillageServiceTest {
         when(inputterMock.yesOrNo()).thenReturn(true);
         
         // When
-        vs.villageVisit(p);
+        vs.villageVisit(p, Config.targetGold);
         
         // Then
         assertEquals(1, p.multiplier);
     }
+    
+    @Test
+    public void testNotWon() {
+        // Given
+        Player p = new Player();
+        p.gold = 1;
+        when(inputterMock.yesOrNo()).thenReturn(true);
+        
+        // When
+        vs.villageVisit(p, 5);
+        
+        // Then
+        verify(voMock).backToBattle();
+    }
+    
+    // Tricky to test winning as it exits the JVM by design
 }

@@ -9,4 +9,6 @@ public interface GameOutputter {
     void lost(int opponentNum);
 
     void gold(int gold);
+
+    void intro();
 }

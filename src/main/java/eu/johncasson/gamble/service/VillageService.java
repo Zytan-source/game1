@@ -18,7 +18,7 @@ public class VillageService {
         this.ps = ps;
     }
 
-    public void visit(int matchCount, Player p) {
+    public void visit(int matchCount, Player p, int targetGold) {
 		if(villageJustUnlocked(matchCount)) {
 			vos.welcome();
 		}
@@ -33,10 +33,10 @@ public class VillageService {
 			return;
 		}
 		
-		villageVisit(p);
+		villageVisit(p, targetGold);
 	}
 
-	public void villageVisit(Player p) {
+	public void villageVisit(Player p, int targetGold) {
 		boolean finished = false;
 		
 		vos.trekToVillage();
@@ -44,8 +44,17 @@ public class VillageService {
 		vos.cardsRecharged();
 		p.multiplier = 1;
 		
+		vos.idol();
+		if(p.gold >= targetGold) {
+		    vos.win();
+		    System.exit(0);
+		} else {
+		    vos.notEnoughGold(targetGold);
+		}
+		
+		
 		while(!finished) {
-			vos.visiting(p.gold);
+			vos.visiting();
 			vos.readyForBattle();
 			finished = input.yesOrNo();
 		}

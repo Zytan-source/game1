@@ -41,7 +41,6 @@ public class CardService {
 	 * Allows the player to recharge a single card
 	 */
     public void rechargeCard(Player p) {
-        
         co.chooseCardToRecharge();
         PlayerCard card = in.selectCard(p.cards);
         card.uses = card.maxUses;

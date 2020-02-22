@@ -6,7 +6,7 @@ public interface VillageOutputter {
 
     void welcome();
 
-    void visiting(int gold);
+    void visiting();
 
     void readyForBattle();
 
@@ -15,5 +15,11 @@ public interface VillageOutputter {
     void backToBattle();
 
     void trekToVillage();
+
+    void idol();
+
+    void notEnoughGold(int targetGold);
+
+    void win();
 
 }

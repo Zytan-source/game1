@@ -4,7 +4,6 @@ import eu.johncasson.gamble.config.Config;
 
 public class ConsoleGameOutputter implements GameOutputter {
 
-
     @Override
     public void nextMatch(int matchNum, int reward) {
         String str = String.format("**************************************\n"
@@ -12,7 +11,7 @@ public class ConsoleGameOutputter implements GameOutputter {
                 + "**************************************\n", matchNum);
     
         Util.print(str);
-        str = String.format("You'll get %d gold if you win", reward);
+        str = String.format("Reward: %d gold", reward);
         Util.print(str);
         Util.pause(Config.DELAY * 3);
         
@@ -50,4 +49,14 @@ public class ConsoleGameOutputter implements GameOutputter {
 		String str = String.format("You have %d gold\n", gold);
 		Util.print(str);
 	}
+
+    @Override
+    public void intro() {
+        String str = "You are a warrior tasked by the king of the realm "
+                + "to protect the treacherous dark forest.\n It turns out the "
+                + "forest is quite safe and full of gamblers\n looking "
+                + "to play a new card game that has swept the kingdom.\n "
+                + "Before you realise it, you are addicted!\n";
+        Util.print(str);
+    }
 }

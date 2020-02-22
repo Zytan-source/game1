@@ -6,10 +6,12 @@ public class Config {
 	public static int DELAY = 500;
 	
 	// Rewards for each match
-	public static final int[] REWARDS = {1,2,3,4,5,6,7,8,9,10};
+	public static final int[] REWARDS = {1,2,3,1,3,2,2,4,1,2,
+	        4,1,2,3,2};
 	
 	// Number of CPU cards in each match
-	public static final int[] CARDS_PER_MATCH = {1,1,2,2,3,3,3,3,3,3};
+	public static final int[] CARDS_PER_MATCH = {1,2,3,1,3,2,2,4,1,2,
+	        4,1,2,3,2};
 	
 	public static final String[] NUM_TO_NAME = { "first", "second", "third", "fourth", "fifth",
 												  "sixth", "seventh", "eigth", "ninth", "tenth",
@@ -17,4 +19,5 @@ public class Config {
 												  "fifteenth"};
 	
 	public static final int VILLAGE_UNLOCKED_AFTER = 1;
+    public static int targetGold = 66;
 }
