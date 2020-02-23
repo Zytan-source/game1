@@ -58,5 +58,6 @@ public class ConsoleGameOutputter implements GameOutputter {
                 + "to play a new card game that has swept the kingdom.\n"
                 + "Before you realise it, you are addicted!\n";
         Util.print(str);
+        Util.pause(5000);
     }
 }

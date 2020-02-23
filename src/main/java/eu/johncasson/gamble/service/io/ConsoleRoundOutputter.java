@@ -77,7 +77,7 @@ public class ConsoleRoundOutputter implements RoundOutputter {
      */
 	@Override
     public void chooseCard() {
-		System.out.print("Choose a card to play: ");
+		System.out.println("Choose a card to play: ");
 	}
 
 	/* (non-Javadoc)

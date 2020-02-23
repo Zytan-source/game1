@@ -1,22 +1,21 @@
 <!DOCTYPE html>
 <html>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <style type="text/css">
 </style>
 <body>
-<pre id="output" style="height: 25em"></pre>
+<pre id="output" style="height: 35em; white-space: pre-wrap;"></pre>
 <script>
   // helper function: log message to screen
   function log(msg) {
     var output = document.getElementById('output').textContent;
     output += msg + "\n";
-    var reduced = output.substring(output.length - 450, output.length);
+    var reduced = output.substring(output.length - 650, output.length);
     document.getElementById('output').textContent = reduced;
   }
 
   // setup websocket with callbacks
-  //var ws = new WebSocket('ws://ec2-35-177-168-158.eu-west-2.compute.amazonaws.com:80');
-  var ws = new WebSocket('ws://ec2-35-177-169-160.eu-west-2.compute.amazonaws.com:80');
-  //var ws = new WebSocket('ws://localhost:80/');
+  var ws = new WebSocket('ws://' + location.host + '/');
   ws.onopen = function() {
     log('CONNECT');
   };
@@ -30,7 +29,7 @@
 
 <div id="footerContainer">
 <form action="#" onsubmit="ws.send(document.getElementById('input').value); document.getElementById('input').value = '';">
-    <input type="textbox" id="input" />
+    <input type="textbox" id="input" autocomplete="off" />
     <button type=submit>Submit</button>
 </form>
 </div>
