@@ -53,9 +53,9 @@ public class ConsoleGameOutputter implements GameOutputter {
     @Override
     public void intro() {
         String str = "You are a warrior tasked by the king of the realm "
-                + "to protect the treacherous dark forest.\n It turns out the "
-                + "forest is quite safe and full of gamblers\n looking "
-                + "to play a new card game that has swept the kingdom.\n "
+                + "to protect the treacherous dark forest.\nIt turns out the "
+                + "forest is quite safe and full of gamblers\nlooking "
+                + "to play a new card game that has swept the kingdom.\n"
                 + "Before you realise it, you are addicted!\n";
         Util.print(str);
     }

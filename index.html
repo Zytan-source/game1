@@ -3,28 +3,13 @@
 <style type="text/css">
 </style>
 <body>
-<pre id="output" style="height: 23em"></pre>
+<pre id="output" style="height: 25em"></pre>
 <script>
   // helper function: log message to screen
   function log(msg) {
-    var existing = document.getElementById('output').textContent;
-    existing += msg + "\n";
-    var split = existing.split("\n");
-    var reduced = "";
-    if(split.length > 10) {
-      for(i=split.length-20; i<split.length;i++) {
-        console.log("i is " + i);
-        console.log("split[i] is " + split[i]);
-        if(split[i] != "") {
-          reduced += split[i] + "\n";
-        }
-      }
-    } else {
-      console.log("reduced = existing");
-      reduced = existing;
-    }
-    console.log(reduced);
-    //var reduced = existing.substring(existing.length - 400, existing.length);
+    var output = document.getElementById('output').textContent;
+    output += msg + "\n";
+    var reduced = output.substring(output.length - 450, output.length);
     document.getElementById('output').textContent = reduced;
   }
 
