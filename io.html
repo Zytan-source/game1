@@ -1,14 +1,36 @@
 <!DOCTYPE html>
-<pre id="output"></pre>
+<html>
+<style type="text/css">
+</style>
+<body>
+<pre id="output" style="height: 23em"></pre>
 <script>
   // helper function: log message to screen
   function log(msg) {
-    document.getElementById('output').textContent += msg + '\n';
+    var existing = document.getElementById('output').textContent;
+    existing += msg + "\n";
+    var split = existing.split("\n");
+    var reduced = "";
+    if(split.length > 10) {
+      for(i=split.length-20; i<split.length;i++) {
+        console.log("i is " + i);
+        console.log("split[i] is " + split[i]);
+        if(split[i] != "") {
+          reduced += split[i] + "\n";
+        }
+      }
+    } else {
+      console.log("reduced = existing");
+      reduced = existing;
+    }
+    console.log(reduced);
+    //var reduced = existing.substring(existing.length - 400, existing.length);
+    document.getElementById('output').textContent = reduced;
   }
 
   // setup websocket with callbacks
   //var ws = new WebSocket('ws://ec2-35-177-168-158.eu-west-2.compute.amazonaws.com:80');
-  var ws = new WebSocket('ws://lb-958774226.eu-west-2.elb.amazonaws.com:80');
+  var ws = new WebSocket('ws://ec2-35-177-169-160.eu-west-2.compute.amazonaws.com:80');
   //var ws = new WebSocket('ws://localhost:80/');
   ws.onopen = function() {
     log('CONNECT');
@@ -21,7 +43,11 @@
   };
 </script>
 
+<div id="footerContainer">
 <form action="#" onsubmit="ws.send(document.getElementById('input').value); document.getElementById('input').value = '';">
     <input type="textbox" id="input" />
     <button type=submit>Submit</button>
 </form>
+</div>
+</body>
+</html>
